@@ -16,7 +16,6 @@ class HttpRequester:
         response = requests.post(
             url=self.url, data=json.dumps(payload), headers=headers, timeout=5
         )
-        print(response)
         response_json = response.json()
 
         return response_json
