@@ -4,10 +4,15 @@ from sqlalchemy.orm import sessionmaker
 class DatabaseManager:
     def __init__(self, db_url):
         self.engine = create_engine(db_url, echo=False)
-        self.Session = sessionmaker(bind=self.engine)
+        self.session = None
 
     def create_session(self):
-        return self.Session()
+        if self.session == None:
+            self.session = sessionmaker(bind=self.engine)
 
-    def close(self):
-        self.engine.dispose()
+        return self.session()
+
+    def close_session(self):
+        if self.session != None:
+            self.session.close()
+        self.session = None

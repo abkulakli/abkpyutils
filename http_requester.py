@@ -10,7 +10,7 @@ class HttpRequester:
 
     def post_request(self, payload):
         if self.url is None:
-            raise Exception("No app_url configured")
+            self.url = "http://localhost:8082"
 
         headers = {"Content-Type": "application/json"}
         response = requests.post(
