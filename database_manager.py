@@ -3,16 +3,16 @@ from sqlalchemy.orm import sessionmaker
 
 class DatabaseManager:
     def __init__(self, db_url):
-        self.engine = create_engine(db_url, echo=False)
-        self.session = None
+        self._engine = create_engine(db_url, echo=False)
+        self._session_maker = sessionmaker(bind=self._engine)
+        self._active_session = None
 
     def create_session(self):
-        if self.session == None:
-            self.session = sessionmaker(bind=self.engine)
-
-        return self.session()
+        if self._active_session is None:
+            self._active_session = self._session_maker()
+        return self._active_session
 
     def close_session(self):
-        if self.session != None:
-            self.session.close()
-        self.session = None
+        if self._active_session is not None:
+            self._active_session.close()
+            self._active_session = None
