@@ -1,1 +1,4 @@
 __pycache__/*
+abkpyutils.egg-info/*
+build/lib/abkpyutils/*
+dist/*
