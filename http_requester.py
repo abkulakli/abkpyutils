@@ -1,6 +1,7 @@
 import json
 import requests
 
+
 class HttpRequester:
     def __init__(self):
         self.url = None
