@@ -1,5 +1,8 @@
 from sqlalchemy import create_engine
 from sqlalchemy.orm import sessionmaker
+from sqlalchemy.ext.declarative import declarative_base
+
+Base = declarative_base()
 
 
 class DatabaseManager:
@@ -8,7 +11,12 @@ class DatabaseManager:
         self._session_maker = sessionmaker(bind=self._engine)
         self._active_session = None
 
-    def create_session(self):
+        Base.metadata.create_all(self._engine)
+
+    def get_base(self):
+        return self._base
+
+    def open_session(self):
         if self._active_session is None:
             self._active_session = self._session_maker()
         return self._active_session
