@@ -1,14 +1,14 @@
 from setuptools import setup, find_packages
 
 setup(
-    name='abkpyutils',
+    name='ddopy',
     version='0.1.0',
     description='A collection of utility functions by Ali Burak Kulakli',
     long_description=open('README.md').read(),
     long_description_content_type='text/markdown',
     author='Ali Burak Kulakli',
     author_email='kulakli@gmail.com',
-    url='https://github.com/abkulakli/abkpyutils',
+    url='https://github.com/abkulakli/ddopy',
     license='MIT',
     packages=find_packages(),
     classifiers=[
