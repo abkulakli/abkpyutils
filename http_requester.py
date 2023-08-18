@@ -14,9 +14,7 @@ class HttpRequester:
             self.url = "http://localhost:8082"
 
         headers = {"Content-Type": "application/json"}
-        response = requests.post(
-            url=self.url, data=json.dumps(payload), headers=headers, timeout=5
-        )
+        response = requests.post(url=self.url, data=json.dumps(payload), headers=headers, timeout=5)
         response_json = response.json()
 
         return response_json
