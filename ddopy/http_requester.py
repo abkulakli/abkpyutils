@@ -4,17 +4,17 @@ import requests
 
 class HttpRequester:
     def __init__(self):
-        self.url = None
+        self._endpoint_url = None
 
-    def set_url(self, url):
-        self.url = url
+    def set_endpoint_url(self, url):
+        self._endpoint_url = url
 
     def post_request(self, payload):
-        if self.url is None:
-            self.url = "http://localhost:8082"
+        if self._endpoint_url is None:
+            raise Exception("Endpoint URL is not set. Call set_endpoint_url() method first.")
 
         headers = {"Content-Type": "application/json"}
-        response = requests.post(url=self.url, data=json.dumps(payload), headers=headers, timeout=5)
+        response = requests.post(url=self._endpoint_url, data=json.dumps(payload), headers=headers, timeout=5)
         response_json = response.json()
 
         return response_json
