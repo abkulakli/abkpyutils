@@ -9,3 +9,7 @@ class EndpointUrl(Base):
 
     id = Column(String, primary_key=True)
     url = Column(String, nullable=False)
+
+    def update_from(self, other):
+        if other.url:
+            self.url = other.url

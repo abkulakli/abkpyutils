@@ -1,7 +1,7 @@
 from sqlalchemy import create_engine
 from sqlalchemy.orm import sessionmaker
 from sqlalchemy.orm.exc import NoResultFound
-from model.base import Base
+from ddopy.db.model.base import Base
 
 
 class DatabaseManager:
