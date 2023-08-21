@@ -1,6 +1,7 @@
 from sqlalchemy import create_engine
 from sqlalchemy.orm import sessionmaker
 from sqlalchemy.ext.declarative import declarative_base
+from sqlalchemy.orm.exc import NoResultFound
 
 Base = declarative_base()
 
@@ -13,14 +14,23 @@ class DatabaseManager:
 
         Base.metadata.create_all(self._engine)
 
-    def add(self, obj):
-        self._open_session().add(obj)
+    def set(self, obj):
+        try:
+            existing_obj = self._get_session().merge(obj)
+        except NoResultFound:
+            existing_obj = None
+
+        if existing_obj is not None:
+            existing_obj.update_from(obj)
+        else:
+            self._get_session().add(obj)
+
         self._commit_session()
 
     def get(self, obj):
-        return self._open_session().query(obj).first()
+        return self._get_session().query(obj).first()
 
-    def _open_session(self):
+    def _get_session(self):
         if self._active_session is None:
             self._active_session = self._session_maker()
         return self._active_session
