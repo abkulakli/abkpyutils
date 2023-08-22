@@ -1,22 +1,16 @@
 name: Publish Python 🐍 distributions 📦 to PyPI and TestPyPI
 
-on: push
+on:
+  workflow_run:
+    workflows: [Python Lint and Test]
+    types:
+      - completed
 
 jobs:
-  wait-for-10-seconds:
-    name: Wait for 10 seconds
-    runs-on: ubuntu-latest
-
-    steps:
-    - name: Sleep and Run
-      run: |
-        echo "Sleeping for 10"
-        sleep 10
-
   build-n-publish:
-    needs: [lint-and-test]
     name: Build and publish Python 🐍 distributions 📦 to PyPI and TestPyPI
     runs-on: ubuntu-latest
+    if: ${{ github.event.workflow_run.conclusion == 'success' }}
     steps:
     - uses: actions/checkout@v3
     - name: Set up Python
