@@ -4,8 +4,8 @@ import unittest
 from ddopy.db.database_manager import DatabaseManager
 from ddopy.db.model.endpoint_url import EndpointUrl
 
-class TestDatabaseManager(unittest.TestCase):
 
+class TestDatabaseManager(unittest.TestCase):
     def test_database_manager(self):
         db_object = DatabaseManager("sqlite:///test/test.db")
         model_object = EndpointUrl()
@@ -17,4 +17,3 @@ class TestDatabaseManager(unittest.TestCase):
         self.assertIsNotNone(db_object.get(EndpointUrl))
         self.assertEqual(db_object.get(EndpointUrl).url, "https://httpbin.org/post")
         self.assertEqual(db_object.get(EndpointUrl).id, "1")
-

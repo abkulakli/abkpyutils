@@ -3,8 +3,8 @@
 import unittest
 from ddopy.http.http_requester import HttpRequester
 
-class TestHttpRequester(unittest.TestCase):
 
+class TestHttpRequester(unittest.TestCase):
     def test_request(self):
         object = HttpRequester()
         url = "https://httpbin.org/post"
@@ -15,4 +15,3 @@ class TestHttpRequester(unittest.TestCase):
         self.assertEqual(response["url"], url)
         self.assertEqual(response["headers"]["Content-Type"], "application/json")
         self.assertEqual(response["json"], payload)
-
