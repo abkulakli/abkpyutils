@@ -20,7 +20,7 @@ class HttpRequester:
         if self._endpoint_url is None:
             raise Exception("Endpoint URL is not set. Call set_endpoint_url() method first.")
 
-        response = requests.post(url=self._endpoint_url, data=json.dumps(payload), headers=self._headers, timeout=5)
+        response = requests.post(url=self._endpoint_url, data=json.dumps(payload), headers=self._headers, timeout=30)
         response_json = response.json()
 
         return response_json
