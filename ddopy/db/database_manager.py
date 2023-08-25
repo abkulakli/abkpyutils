@@ -1,3 +1,6 @@
+"""
+Database manager module.
+"""
 from sqlalchemy import create_engine
 from sqlalchemy.orm import sessionmaker
 from sqlalchemy.orm.exc import NoResultFound

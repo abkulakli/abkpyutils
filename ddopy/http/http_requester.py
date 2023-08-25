@@ -1,3 +1,6 @@
+"""
+This module contains HttpRequester class which is used to send HTTP requests.
+"""
 import json
 import requests
 
