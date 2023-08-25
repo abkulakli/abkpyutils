@@ -25,6 +25,9 @@ class ConfigManager:
                     self.config_data[config_key] = config_value
 
     def get_value(self, key):
+        if key not in self.config_data:
+            raise Exception(f"Key {key} is not found in config file {self.file_name}")
+
         return self.config_data.get(key)
 
     def set_value(self, key, value):
