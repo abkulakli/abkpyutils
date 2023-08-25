@@ -7,12 +7,16 @@
 ## Classes
 
 ### DatabaseManager
+Manage your simple database operations with this class.
 
 ### HttpRequester
+Make HTTP requests with this class.
 
 ### ConfigManager
+Manage your configuration files with this class.
 
 ### TimeController
+Manage your time-based operations with this class.
 
 ## Installation
 
