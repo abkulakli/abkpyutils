@@ -2,8 +2,8 @@ from setuptools import setup, find_packages
 
 setup(
     name='ddopy',
-    version='0.1.14',
-    description='A collection of utility functions by Ali Burak Kulakli',
+    version='0.1.15',
+    description='A collection of utility functions by Ali Burak Kulakli @ DDOSOFT',
     long_description=open('README.md').read(),
     long_description_content_type='text/markdown',
     author='Ali Burak Kulakli',
