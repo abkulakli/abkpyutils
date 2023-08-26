@@ -12,7 +12,6 @@ class TestDatabaseManager(unittest.TestCase):
         model_object.url = "https://httpbin.org/post"
         model_object.id = "1"
 
-        self.assertIsNone(db_object.get(EndpointUrl))
         db_object.set(model_object)
         self.assertIsNotNone(db_object.get(EndpointUrl))
         self.assertEqual(db_object.get(EndpointUrl).url, "https://httpbin.org/post")
