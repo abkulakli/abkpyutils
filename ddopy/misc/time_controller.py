@@ -59,7 +59,7 @@ class TimeController:
         return self.get_time(offset_in_seconds).astimezone().isoformat()
 
     def get_time(self, offset_in_seconds=0):
-        return (self.__current_time + timedelta(offset_in_seconds))
+        return self.__current_time + timedelta(offset_in_seconds)
 
     def set_time(self, current_time):
         self.__current_time = current_time
