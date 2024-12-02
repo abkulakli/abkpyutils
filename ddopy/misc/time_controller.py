@@ -55,10 +55,13 @@ class TimeController:
         if self.__remaining_time <= 0:
             self.__scheduler.shutdown()
 
-    def get_current_time(self):
-        return self.__current_time.astimezone().isoformat()
+    def get_time_str(self, offset_in_seconds=0):
+        return (self.__current_time + timedelta(offset_in_seconds)).astimezone().isoformat()
 
-    def set_current_time(self, current_time):
+    def get_time(self):
+        return self.__current_time
+
+    def set_time(self, current_time):
         self.__current_time = current_time
 
     def get_remaining_time(self):
